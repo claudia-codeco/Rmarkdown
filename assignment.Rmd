@@ -1,0 +1,72 @@
+A very simple R markdown document
+========================================================
+
+Script structure
+----------------
+
+- Creating data
+- Graphs
+- Hipothesis test
+- Modeling
+
+Creating some *data*:
+---------------------
+
+```{r dados}
+r1 <- 10+rnorm(100)*10
+r2 <-4.5+r1 +rnorm(100)*3
+summary(r1)
+summary(r2)
+```
+
+```{r media1,echo=FALSE}
+m1 = mean(r1)
+m2 = mean(r2)
+```
+
+The mean of r1 is `r m1` r2 is `r m2`.
+
+Graphs
+------
+
+```{r graficos1}
+par(mfrow=c(2,1))
+hist(r1,col=2)
+hist(r2,col=3)
+```
+
+A scatterplot r1xr2
+(using echo = False)
+
+```{r graficos2,echo=FALSE}
+par(mfrow=c(1,1))
+plot(r1,r2,col=2)
+```
+
+
+Hypothesis test
+---------------
+
+```{ttest r}
+test <- t.test(r1,r2)
+```
+
+Regression Model
+----------------
+
+```{reg r}
+reg<-lm(r2~r1)
+summary(reg)
+```
+
+The fitted curve is:
+
+```{regplot r}
+plot(r1,r2)
+abline(reg)
+```
+
+
+
+
+
